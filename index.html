@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-language" content="de-at" />
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+
+<title>mooImageLayer</title>
+
+<script type="text/javascript" src="mootools-1.2.4-core-yc.js"></script>
+<script type="text/javascript" src="mooElementScroller.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+	var myScroller = new mooElementScroller('somelist', {
+		resize: {
+			enabled: true,
+			offset: 120
+		},
+		slow: 2
+	});
+//]]>
+</script>
+
+<style type="text/css">
+	#somelist-mes-wrapper {
+		height: 100px;
+		overflow: hidden;
+		border: 1px solid black;
+	}
+	
+	#somelist {
+		list-style: none;
+		padding-right: 100px;
+	}
+	
+	#somelist li {
+		padding: 10px;
+		margin: 20px 0px;
+		border: 1px solid gray;
+		background-color: lightgreen;
+	}
+
+	.mes-scrollarea {
+		position: fixed;
+		top: 50%;
+		margin-top: -58px;
+		height: 156px;
+		right: 20px;
+		z-index: 3;
+	}
+
+	.mes-up, .mes-down {
+		height: 48px;
+		width: 51px;
+		cursor: pointer;
+		background-repeat: no-repeat;
+		background-color: transparent;
+	}
+
+	.mes-up {
+		background-image: url('go-up.png');
+		background-position: top left;
+		margin-bottom: 60px;
+	}
+
+	.mes-down {
+		background-image: url('go-down.png');
+		background-position: bottom left;
+	}
+</style>
+
+
+</head>
+
+<body>
+<h1>Resize me...</h1>
+
+<ul id="somelist">
+	<li>One</li>
+	<li>Two</li>
+	<li>Three</li>
+	<li>Four</li>
+	<li>Five</li>
+	<li>Six</li>
+	<li>Seven</li>
+</ul>
+</body>
+</html>
