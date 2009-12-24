@@ -1,4 +1,4 @@
-Mootools Element Scroller.
+Mootools Element Scroller
 ===========
 
 A small and (hopefully) fast inline image loader.
