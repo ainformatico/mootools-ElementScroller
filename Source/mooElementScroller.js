@@ -1,11 +1,15 @@
-/**
- * Quite flexible implementation to make a content box scrollable per
- * mouse-wheel and scroll-buttons.
- *
- * © Alexander Hofbauer
- */
+/*
+---
+description: A plugin to scroll any element.
+license: GPL
+authors: Alexander Hofbauer
+provides: [mooElementScroller]
+requires:
+- core:1.2.4: [Class, Class.Extras, Element.Dimensions, Event]
+...
+*/
 
-var mooTextScroller = new Class
+var mooElementScroller = new Class
 ({
 	Implements: Options,
 	
@@ -42,13 +46,13 @@ var mooTextScroller = new Class
 		this.content = document.id(this.content);
 		if (this.content == null) return;
 		
-		// add a wrapping element with the id of the element to scroll + "-mts-wrapper"
-		this.element = new Element('div', {'id': this.content.get('id')+'-mts-wrapper' });
+		// add a wrapping element with the id of the element to scroll + "-mes-wrapper"
+		this.element = new Element('div', {'id': this.content.get('id')+'-mes-wrapper' });
 		this.element.wraps(this.content);
 
 		// add the scroll area that will contain the scroll buttons
 		this.scroll = new Element('div', {
-			'class': 'mts-scrollarea',
+			'class': 'mes-scrollarea',
 			'styles': {
 				'opacity': 0
 			}
@@ -57,7 +61,7 @@ var mooTextScroller = new Class
 		this.scroll.inject(this.element, 'after');
 		
 		var up = new Element('div', {
-			'class': 'up'
+			'class': 'mes-up'
 		}).addEvents({
 			'mouseenter': 	function() {
 				this.modifier = -(this.options.slow);
@@ -69,7 +73,7 @@ var mooTextScroller = new Class
 		});
 		
 		var down = new Element('div', {
-			'class': 'down'
+			'class': 'mes-down'
 		}).addEvents({
 			'mouseenter': 	function() {
 				this.modifier = this.options.slow;
