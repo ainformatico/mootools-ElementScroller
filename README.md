@@ -9,6 +9,7 @@ How to use
 
 Javascript:
 
+	#JS
 	var myScroller = new mooTextScroller('element', {
 		resize: {
 			enabled: true,
