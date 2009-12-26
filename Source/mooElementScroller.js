@@ -5,7 +5,7 @@ license: GPL
 authors: Alexander Hofbauer
 provides: [mooElementScroller]
 requires:
-- core:1.2.4: [Class, Class.Extras, Element.Dimensions, Event]
+  core:1.2.4: [Class, Class.Extras, Element.Dimensions, Event]
 ...
 */
 
