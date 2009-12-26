@@ -1,5 +1,5 @@
 Mootools Element Scroller
-===========
+=========================
 
 Allows you to convert (wrap) an element to make it scrollable. Automatically inserts a scroll-area and up/down scroll elements.
 
@@ -80,4 +80,18 @@ HTML:
 		&lt;li&gt;Six&lt;/li&gt;
 		&lt;li&gt;Seven&lt;/li&gt;
 	&lt;/ul&gt;
+
+
+Options
+-------
+
+The plugin uses a modifier internally that controlls the scroll speed.
+
+* slow:          Default: 5. MouseOver speed.
+* fast:          Default: 25. MouseDown speed.
+* scrollSpeed:   Default: 30. Pixels to move with each scroll event.
+
+The resize hash controlls whether the wrapping element should be resized if the page is resized. Offset will be substracted from the maxmimum width available.
+
+* resize:        Default: { enabled: false, offset: 0 }.
 

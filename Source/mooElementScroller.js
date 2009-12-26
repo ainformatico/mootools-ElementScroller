@@ -36,12 +36,15 @@ var mooElementScroller = new Class
 		this.content = element;
 		this.setOptions(options);
 
-		window.addEvent('domready', function() { this.prepareEvents(); }.bind(this));
-		window.addEvent('resize', function() { this.resizeEvent(); }.bind(this));
+		window.addEvent('domready', function() { this.prepare(); }.bind(this));
+		
+		if (this.options.resize.enabled) {
+			window.addEvent('resize', function() { this.resizeEvent(); }.bind(this));
+		}
 	},
 
 	
-	prepareEvents: function()
+	prepare: function()
 	{
 		this.content = document.id(this.content);
 		if (this.content == null) return;
@@ -54,7 +57,7 @@ var mooElementScroller = new Class
 		this.scroll = new Element('div', {
 			'class': 'mes-scrollarea',
 			'styles': {
-				'opacity': 0
+				'opacity': (this.options.resize.enabled ? 0 : 1)
 			}
 		});
 		
@@ -86,7 +89,9 @@ var mooElementScroller = new Class
 
 		this.scroll.grab(up).grab(down);
 		
-		this.resizeEvent();
+		if (this.options.resize.enabled) {
+			this.resizeEvent();
+		}
 		
 		var scrollSpeed = this.options.scrollSpeed;
 		this.element.addEvent('mousewheel', function(e) {
@@ -100,15 +105,9 @@ var mooElementScroller = new Class
 	
 	resizeEvent: function()
 	{
-		if (this.options.resize.enabled) {
-			var newHeight = document.id(document.body).getSize().y - this.options.resize.offset;
-			this.element.setStyle('height', newHeight);
-		}	
-		this.showScroll();
-	},
-	
-	showScroll: function()
-	{
+		var newHeight = document.id(document.body).getSize().y - this.options.resize.offset;
+		this.element.setStyle('height', newHeight);
+		
 		if (this.element.getSize().y >= this.element.getScrollSize().y) {
 			this.scroll.fade('out');
 			this.element.scrollTo(0, 0);
