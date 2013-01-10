@@ -51,22 +51,22 @@ var mooElementScroller = new Class
 		if (this.content == null) return;
 		
 		// add a wrapping element with the id of the element to scroll + "-mes-wrapper"
-		this.element = new Element('div', {'id': this.content.get('id')+'-mes-wrapper' });
+		this.element = new Element('div');
+		this.element.set('id', this.content.get('id')+'-mes-wrapper' );
 		this.element.wraps(this.content);
 
 		// add the scroll area that will contain the scroll buttons
-		this.scroll = new Element('div', {
-			'class': 'mes-scrollarea',
-			'styles': {
-				'opacity': (this.options.resize.enabled ? 0 : 1)
-			}
-		});
+		this.scroll = new Element('div');
+		this.scroll.set('class', 'mes-scrollarea');
+		this.scroll.setStyles({
+		  'opacity': (this.options.resize.enabled ? 0 : 1)
+			});
 		
 		this.scroll.inject(this.element, 'after');
 		
-		var up = new Element('div', {
-			'class': 'mes-up'
-		}).addEvents({
+		var up = new Element('div');
+		up.set('class', 'mes-up');
+		up.addEvents({
 			'mouseenter': 	function() {
 				this.modifier = -(this.options.slow);
 				this.perID = this.buttonScroll.periodical(1, this);
@@ -76,9 +76,9 @@ var mooElementScroller = new Class
 			'mouseleave': 	function() { $clear(this.perID); }.bind(this)
 		});
 		
-		var down = new Element('div', {
-			'class': 'mes-down'
-		}).addEvents({
+		var down = new Element('div');
+		down.set('class', 'mes-down');
+		down.addEvents({
 			'mouseenter': 	function() {
 				this.modifier = this.options.slow;
 				this.perID = this.buttonScroll.periodical(1, this);
