@@ -2,10 +2,11 @@
 ---
 description: A plugin to scroll any element.
 license: GPL
-authors: Alexander Hofbauer
+authors: Alexander Hofbauer, Alejandro El Informático
+comments: fixed width below 0
 provides: [mooElementScroller]
 requires:
-  core:1.2.4: [Class, Class.Extras, Element.Dimensions, Event]
+  core:1.2.4.1: [Class, Class.Extras, Element.Dimensions, Event]
 ...
 */
 
@@ -106,6 +107,11 @@ var mooElementScroller = new Class
 	resizeEvent: function()
 	{
 		var newHeight = document.id(document.body).getSize().y - this.options.resize.offset;
+		//FIX, we are getting width below 0
+		if(newHeight < 0)
+		{
+			newHeight = 0;
+		}
 		this.element.setStyle('height', newHeight);
 		
 		if (this.element.getSize().y >= this.element.getScrollSize().y) {
